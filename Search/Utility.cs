@@ -7,21 +7,6 @@ namespace Search
 {
     internal class Utility
     {
-        internal static int[] GetMockArray(int size)
-        {
-            var random = new Random();
-            var array = new int[size];
-            for (var i = 0; i < size; i++)
-                array[i] = random.Next(1000);
-            return array;
-        }
-
-        internal static int GetRandomNumber(int min = 0, int max = 100)
-        {
-            var random = new Random();
-            return random.Next(min, max);
-        }
-
         internal static int[] GetArrayInput()
         {
             int[] array = null;
@@ -39,7 +24,7 @@ namespace Search
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Input Failed !");
+                Console.WriteLine("Input Failed ! Using mock data to run algorithm");
                 Console.WriteLine(ex);
             }
             return array;
@@ -58,7 +43,7 @@ namespace Search
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Input Failed !");
+                Console.WriteLine("Input Failed ! Using mock data to run algorithm");
                 Console.WriteLine(ex);
             }
             return searchElement;

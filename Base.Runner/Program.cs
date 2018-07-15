@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿using Search;
 
 namespace Base.Runner
 {
@@ -6,7 +6,8 @@ namespace Base.Runner
     {
         public static void Main(string[] args)
         {
-            new Search.LinearSearch(true).Search();
+            //new LinearSearch().Search();
+            //new BinarySearch().Search();
 
 
             System.Console.WriteLine("\n\nPress any key to exit...");

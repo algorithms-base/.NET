@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{ABC2B882-1114-4D48-9D2F-DA44CC9F13CC}</ProjectGuid>
+    <ProjectGuid>{58FE301C-F264-4B70-8C4E-4E4CBC83B4D5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Search</RootNamespace>
-    <AssemblyName>Search</AssemblyName>
+    <RootNamespace>Base.Common</RootNamespace>
+    <AssemblyName>Base.Common</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,16 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BinarySearch.cs" />
-    <Compile Include="LinearSearch.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Base.Common\Base.Common.csproj">
-      <Project>{58FE301C-F264-4B70-8C4E-4E4CBC83B4D5}</Project>
-      <Name>Base.Common</Name>
-    </ProjectReference>
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
