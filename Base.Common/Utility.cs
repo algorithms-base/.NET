@@ -14,7 +14,7 @@ namespace Base.Common
             return array;
         }
 
-        public static int GetRandomNumber(int min = 0, int max = 100)
+        public static int GetRandomNumber(int min = 1, int max = 100)
         {
             var random = new Random();
             return random.Next(min, max);

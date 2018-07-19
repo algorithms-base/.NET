@@ -5,6 +5,7 @@
         #region :: Fields ::
 
         private readonly int _arraySize = 100;
+        private readonly bool _useMockData;
         private int[] _array;
         private int _searchElement;
 
@@ -12,9 +13,11 @@
 
         #region :: Constructor ::
 
-        public LinearSearch()
+        public LinearSearch(bool useMockData = true)
         {
             System.Console.WriteLine("\n:: Linear Search ::\n");
+            _useMockData = useMockData;
+            if(!_useMockData) return;
             _array = Base.Common.Utility.GetMockArray(_arraySize);
             _searchElement = _array[Base.Common.Utility.GetRandomNumber(0, _array.Length - 1)];
         }
@@ -23,19 +26,37 @@
 
         #region :: Methods ::
 
-        public int Search(bool useMockData = true)
+        public int Search(int? searchElement = null)
         {
-            if (!useMockData)
-            {
-                _array = Utility.GetArrayInput() ?? _array;
-                _searchElement = Utility.GetSearchElementInput() ?? _searchElement;
-            }
+            if (_useMockData) return FindElement(_array, _searchElement);
+            _array = Utility.GetArrayInput() ?? Base.Common.Utility.GetMockArray(_arraySize);
+            if (searchElement == null)
+                _searchElement = Utility.GetSearchElementInput() ??
+                                 _array[Base.Common.Utility.GetRandomNumber(0, _array.Length - 1)];
+            else
+                _searchElement = searchElement.Value;
 
-            System.Console.WriteLine("Array Size                : " + _array.Length);
-            System.Console.WriteLine("Search Element            : " + _searchElement);
-            for (var i = 0; i < _array.Length; i++)
+            return FindElement(_array, _searchElement);
+        }
+
+        public int Search(int[] array, int searchElement)
+        {
+            return FindElement(array, searchElement);
+        }
+
+        private int FindElement(int[] array, int searchElement)
+        {
+            if (array == null)
             {
-                if (_searchElement != _array[i]) continue;
+                System.Console.WriteLine("Null Array !");
+                return -1;
+            }
+            if (_array.Length <= 0) return -1;
+            System.Console.WriteLine("Array Size                : " + array.Length);
+            System.Console.WriteLine("Search Element            : " + searchElement);
+            for (var i = 0; i < array.Length; i++)
+            {
+                if (searchElement != array[i]) continue;
                 System.Console.WriteLine("Element found at Index    : " + i);
                 return i;
             }

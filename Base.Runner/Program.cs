@@ -6,8 +6,8 @@ namespace Base.Runner
     {
         public static void Main(string[] args)
         {
-            //new LinearSearch().Search();
-            //new BinarySearch().Search();
+            new LinearSearch().Search();
+            new BinarySearch().Search();
 
 
             System.Console.WriteLine("\n\nPress any key to exit...");

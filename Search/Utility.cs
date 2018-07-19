@@ -17,6 +17,8 @@ namespace Search
                 if (!int.TryParse(Console.ReadLine(), out arraySize))
                     throw new Exception("Cannot convert input to integer type");
                 array = new int[arraySize];
+                if (arraySize <= 0)
+                    return array;
                 System.Console.WriteLine("Enter " + arraySize + " Array Elements : ");
                 for (var i = 0; i < arraySize; i++)
                     if (!int.TryParse(System.Console.ReadLine(), out array[i]))

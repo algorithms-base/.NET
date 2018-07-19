@@ -7,6 +7,7 @@ namespace Search
         #region :: Fields ::
 
         private readonly int _arraySize = 100;
+        private readonly bool _useMockData;
         private int[] _array;
         private int _searchElement;
 
@@ -14,9 +15,11 @@ namespace Search
 
         #region :: Constructor ::
 
-        public BinarySearch()
+        public BinarySearch(bool useMockData = true)
         {
             System.Console.WriteLine("\n:: Binary Search ::\n");
+            _useMockData = useMockData;
+            if (!_useMockData) return;
             _array = Base.Common.Utility.GetMockArray(_arraySize);
             _searchElement = _array[Base.Common.Utility.GetRandomNumber(0, _array.Length - 1)];
         }
@@ -25,13 +28,18 @@ namespace Search
 
         #region :: Methods ::
 
-        public int Search(bool useMockData = true)
+        public int Search(int? searchElement = null)
         {
-            if (!useMockData)
+            if (!_useMockData)
             {
-                _array = Utility.GetArrayInput() ?? _array;
-                _searchElement = Utility.GetSearchElementInput() ?? _searchElement;
+                _array = Utility.GetArrayInput() ?? Base.Common.Utility.GetMockArray(_arraySize);
+                if (searchElement == null)
+                    _searchElement = Utility.GetSearchElementInput() ??
+                                     _array[Base.Common.Utility.GetRandomNumber(0, _array.Length - 1)];
             }
+            if (_array.Length <= 0) return -1;
+            if (searchElement != null)
+                _searchElement = searchElement.Value;
 
             System.Console.WriteLine("Sorting Array");
             Base.Common.Utility.SortArray(ref _array);
